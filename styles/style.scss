@@ -1,0 +1,512 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    user-select: none;
+    font-family: 'Montserrat', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    li{
+        list-style: none;
+    }
+}
+.wrap{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    .speedIndicator{
+        width: 300px;
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+        background-image: url(../img/speedMeterBg.webp);
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        .arrowRotateAnimation{
+            animation: arrowMove 1 2.5s;
+        }
+        .arrowRotate{
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            transform: rotate(105deg);
+            transform-origin: center 80px;
+            transition: 0.3s;
+            img{
+                width: 35px;
+            }
+       }
+    }
+    .startTest{
+        width: 600px;
+        height: 350px;
+        background-color: #222;
+        box-shadow: 0 0px 15px #000;
+        margin: 50px 0;
+        border-radius: 20px;
+        cursor: pointer;
+        .settins{
+            width: 100%;
+            height: 22%;
+            padding: 10px 50px 10px 50px;
+            // background-color: aqua;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            .settins__option-box{
+                width: 22%;
+                height: 100%;
+                font-size: 1.7em;
+                font-weight: 700;
+            }
+            .settins__TimeOption{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: #54BE3A;
+                text-shadow: 2px 2px #1a8300;
+                .timeChange__Box{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+                    img{
+                        width: 28px;
+                        cursor: pointer;
+                    }
+                    img:nth-child(2),:nth-child(3){
+                        display: none;
+                    }
+                    img:last-child,img:nth-child(3){
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+        .settins__option-box:nth-child(2){
+            color: #FFC52B;
+            text-shadow: 2px 2px #af8000;
+            padding-left: 10px;
+        }
+        .settins__option-box:last-child{
+            color: #F03838;
+            text-shadow: 2px 2px #860000;
+            justify-content: flex-end;
+        }
+        .settinsClick{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .startZone{
+            width: 100%;
+            height: 78%;
+            background-color: #444;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+            font-size: 1.5em;
+            padding-bottom: 10px;
+            color: #a1a1a1;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .startAnimation{
+            width: 100%;
+            height: 78%;
+            background-color: #444;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            display: none;
+            justify-content: center;
+            align-items: center;  
+            color: #a1a1a1;
+            font-weight: 700;
+            padding-bottom: 10px;
+            cursor: pointer;
+            span{
+                width: 0;
+                height: 0;
+                opacity: 0;
+            }
+            span:first-child{
+                height: 0;
+                opacity: 0;
+                animation: startAnimation1 1 0.5s 0.4s;
+            }
+            span:nth-child(2){
+                height: 0;
+                opacity: 0;
+                animation: startAnimation2 1 0.5s 1s;
+            }
+            span:last-child{
+                height: 0;
+                opacity: 0;
+                animation: startAnimation3 1 0.5s 1.6s;
+            }
+        }
+        .clickZone{
+            width: 100%;
+            height: 78%;
+            background-color: #444;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            display: none;
+            justify-content: center;
+            align-items: center;  
+            color: #a1a1a1;
+            font-size: 2em;
+            font-weight: 700;
+            cursor: pointer;
+            padding-bottom: 10px;
+        }
+    }
+}
+.backgroundMask{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0, .85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: opacityMove 1 1s forwards;
+    .results__box{
+        width: 500px;
+        height: 420px;
+        background-color: #333;
+        box-shadow: 0 0 10px #000;
+        border-radius: 20px;
+        padding: 30px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        .speedIndicator{
+            width: 280px;
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            background-image: url(../img/speedMeterBg.webp);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            .arrowRotate{
+                width: 100px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                transform: rotate(-105deg);
+                transform-origin: center 80px;
+                transition: 0.3s;
+                // animation: arrowMove 1 3.1s;
+                img{
+                    width: 33px;
+                }
+           }
+        }
+        > span{
+            font-size: 2em;
+            color: #a1a1a1;
+            font-weight: 700;
+            margin-top: 30px;
+        }
+        .results__container{
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            .result{
+                width: 45%;
+                text-align: center;
+                h3{
+                    font-size: 1.7em;
+                    font-weight: 700;
+                }
+                span{
+                    font-size: 1.5em;
+                    margin-top: 15px;
+                }
+            }
+            .cps{
+                text-shadow: 2px 2px #1a8300;
+                color: #54BE3A;
+            }
+            .clicks{
+                text-shadow: 2px 2px #860000;
+                color: #F03838;
+            }
+        }
+        .restartButton{
+            width: 180px;
+            height: 45px;
+            background-color: #222;
+            box-shadow: 0 3px 10px #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: skew(-0.08turn, 0deg);
+            transition: 0.15s;
+            cursor: pointer;
+            color: white;
+            font-size: 1.1em;
+            *{
+                transform: skew(0.08turn, 0deg);
+            }
+            img{
+                width: 25px;
+                margin-left: 10px;
+            }
+        }
+        .restartButton:active{
+            box-shadow: 0 3px 5px #111;
+        }
+    }
+}
+@keyframes opacityMove{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes startAnimation1{
+    0%{
+        font-size: 0.5em;
+        width: auto;
+        height: auto;
+    }
+    100%{
+        width: auto;
+        height: auto;
+        opacity: 1;
+        font-size: 10em;
+    }
+}
+@keyframes startAnimation2{
+    0%{
+        font-size: 0.5em;
+        width: auto;
+        height: auto;
+    }
+    100%{
+        width: auto;
+        height: auto;
+        opacity: 1;
+        font-size: 10em;
+    }
+}
+@keyframes startAnimation3{
+    0%{
+        font-size: 0.5em;
+        width: auto;
+        height: auto;
+    }
+    100%{
+        width: auto;
+        height: auto;
+        opacity: 1;
+        font-size: 10em;
+    }
+}
+@keyframes arrowMove{
+    0%{
+        transform: rotate(105deg);
+    }
+    100%{
+        transform: rotate(-105deg);
+    }
+}
+@media screen and (max-width:1512px){
+    .wrap{
+        .startTest{
+            width: 530px;
+            height: 320px;
+            margin: 40px 0 0 0;
+            .settins{
+                .settins__TimeOption{
+                    .timeChange__Box{
+                        img{
+                            width: 25px;
+                        }
+                    }
+                }
+                .settins__option-box{
+                    width: 27%;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:1250px){
+    .wrap{
+        .speedIndicator{
+            width: 250px;
+            height: 125px;
+            .arrowRotate{
+                img{
+                    width: 25px;
+                }
+            }
+        }
+        .startTest{
+            width: 490px;
+            height: 300px;
+            margin: 30px 0;
+            .settins{
+                .settins__TimeOption{
+                    .timeChange__Box{
+                        img{
+                            width: 22px;
+                        }
+                    }
+                }
+                .settins__option-box{
+                    width: 27%;
+                }
+            }
+        }
+    }
+    .backgroundMask{
+        .results__box{
+            width: 345px;
+            height: 350px;
+            .restartButton{
+                margin-top: 0;
+            }
+            >span{
+                font-size: 1.7em;
+                margin-top: 0px;
+            }
+            .results__container{
+                margin-top: 0;
+                .result{
+                    h3{
+                        font-size: 1.5em;
+                    }
+                }
+            }
+            .speedIndicator{
+                width: 200px;
+                height: 100px;
+                .arrowRotate{
+                    img{
+                        width: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:1050px){
+    .wrap{
+        padding: 50px 0 30px 0;
+        .startTest{
+            width: 430px;
+            height: 245px;
+            .settins{
+                .settins__option-box{
+                    font-size: 1.5em;
+                    .timeChange__Box{
+                        img{
+                            width: 19px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .backgroundMask{
+        .results__box{
+            .restartButton{
+                width: 135px;
+                height: 40px;
+                font-size: 1em;
+            }
+        }
+    }
+}
+@media screen and (max-width:499px){
+    .wrap{
+        .startTest{
+            width: 90%;
+            .startZone,.clickZone{
+                font-size: 1.2em;
+            }
+            .settins{
+                padding: 5px 30px 5px 30px;
+                .settins__option-box{
+                    font-size: 1.3em;
+                }
+                .settins__option-box:nth-child(2){
+                    padding-left: 0;
+                }
+                .settins__TimeOption{
+                    width: 33%;
+                }
+            }
+        }
+    }
+    .backgroundMask{
+        .results__box{
+            width: 90%;
+        }
+    }
+    @keyframes startAnimation1{
+        0%{
+            font-size: 0.5em;
+            width: auto;
+            height: auto;
+        }
+        100%{
+            width: auto;
+            height: auto;
+            opacity: 1;
+            font-size: 6em;
+        }
+    }
+    @keyframes startAnimation2{
+        0%{
+            font-size: 0.5em;
+            width: auto;
+            height: auto;
+        }
+        100%{
+            width: auto;
+            height: auto;
+            opacity: 1;
+            font-size: 6em;
+        }
+    }
+    @keyframes startAnimation3{
+        0%{
+            font-size: 0.5em;
+            width: auto;
+            height: auto;
+        }
+        100%{
+            width: auto;
+            height: auto;
+            opacity: 1;
+            font-size: 6em;
+        }
+    }
+}

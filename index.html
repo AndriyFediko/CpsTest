@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check your clicks speed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="speedIndicator">
+            <div class="arrowRotate speedArrow">
+                <img src="./img/speedArrrow.webp" alt="speed arrow" class="speedMeterArrow">
+            </div>
+        </div>
+        <div class="startTest clickBox">
+            <div class="settins">
+                <div class="settins__TimeOption settins__option-box">
+                    <span id="timeBlock">10.00</span>
+                    <div class="timeChange__Box">
+                        <img id="time+" src="./img/arrow.webp" alt="arrow+">
+                        <img id="timeArrowTop" src="./img/arrow.webp" alt="arrow+">
+                        <img id="timeArrowBottom" src="./img/arrow.webp" alt="arrow+">
+                        <img id="time-" src="./img/arrow.webp" alt="arrow-">
+                    </div>
+                </div>
+                <div class="settins__option-box settinsClick clickBlock">0</div>
+                <div class="settins__option-box settinsClick cpsBlock">0.00</div>
+            </div>
+            <div class="startZone">Click to start test</div>
+            <div class="startAnimation">
+                <span>3</span>
+                <span>2</span>
+                <span>1</span>
+            </div>
+            <div class="clickZone clickBox">
+                Click!
+            </div>
+        </div>
+    </div>
+    <div class="backgroundMask">
+        <div class="results__box">
+            <div class="speedIndicator">
+                <div class="arrowRotate resultArrowRotate">
+                    <img src="./img/speedArrrow.webp" alt="speed arrow" class="speedMeterArrow">
+                </div>
+            </div>
+            <span>Results</span>
+            <div class="results__container">
+                <div class="result cps">
+                    <h3>CPS</h3>
+                    <span id="resultCps">6.41</span>
+                </div>
+                <div class="result clicks">
+                    <h3>Clicks</h3>
+                    <span id="clicksResult">200</span>
+                </div>
+            </div>
+            <div class="restartButton">
+                <span>Restart</span>
+                <img src="./img/restartIcon.webp" alt="restartImage">
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
