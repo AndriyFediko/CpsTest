@@ -68,12 +68,10 @@ startZone.onclick = function () {
             rotate = (+cps) * 8.4 - 105;
             rotatePlus = (+cps) * 8.4;
             if ((+cps) < 12.5) {
-                console.log('fgfgfg')
                 speedArrow.style.transform = `rotate(${rotate}deg)`;
             } else if ((+cps) > 12.5) {
                 speedArrow.style.transform = `rotate(${rotatePlus}deg)`;
                 if ((rotatePlus) >= 105) {
-                    console.log('dfsfs')
                     speedArrow.style.transform = `rotate(105deg)`;
                 }
             }
@@ -83,12 +81,10 @@ startZone.onclick = function () {
                 resultCps.innerText = (+cps).toFixed(2);
                 clicksResult.innerText = clicks;
                 if ((+cps) < 12.5) {
-                    console.log('fgfgfg')
                     resultArrowRotate.style.transform = `rotate(${rotate}deg)`;
                 } else if ((+cps) > 12.5) {
                     resultArrowRotate.style.transform = `rotate(${rotatePlus}deg)`;
                     if ((rotatePlus) >= 105) {
-                        console.log('dfsfs')
                         resultArrowRotate.style.transform = `rotate(105deg)`;
                     }
                 }
@@ -97,7 +93,7 @@ startZone.onclick = function () {
     }
     setTimeout(testStart, 2300);
     clickZone.onclick = function click() {
-        clicks = clicks + 1;
+        clicks++;
         clickBlock.innerText = clicks;
     }
     clickZone.oncontextmenu = function () {
